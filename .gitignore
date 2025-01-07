@@ -1,0 +1,9 @@
+#Simply the gitingore file
+
+env/
+__pycache__/
+*.pyc
+*.pyo
+.DS_Store
+models/
+outputs/
