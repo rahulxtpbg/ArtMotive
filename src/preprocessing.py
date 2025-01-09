@@ -1,10 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split
 
 import os
 import cv2
 
-data_dir='data/' 
+data_dir='../data/' 
 
 processed_images=[]
 labels=[]
@@ -33,3 +34,5 @@ for student_folder in os.listdir(data_dir):
 
 processed_images=np.array(processed_images) #Convert to np array
 labels=np.array(labels)
+
+X_train, X_val, y_train, y_val=train_test_split(processed_images, labels, test_size=0.2)
