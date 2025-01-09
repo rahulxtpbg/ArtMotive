@@ -36,3 +36,6 @@ processed_images=np.array(processed_images) #Convert to np array
 labels=np.array(labels)
 
 X_train, X_val, y_train, y_val=train_test_split(processed_images, labels, test_size=0.2)
+
+preprocessed_data_save_path='../src/preprocessed_data'
+np.savez_compressed(preprocessed_data_save_path, X_train=X_train, X_val=X_val, y_train=y_train, y_val=y_val)
