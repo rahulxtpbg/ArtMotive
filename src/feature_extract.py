@@ -7,12 +7,13 @@ import torchvision.transforms as transforms
 
 preprocessed_data_path='../src/preprocessed_data.npz'
 preprocessed_data=np.load(preprocessed_data_path)
+X_train=preprocessed_data['X_train']
 
 device=torch.device('mps' if torch.backends.mps.is_available() else 'cpu') #Train on Metal GPU if available, else CPU
 
 model=models.resnet50(pretrained=True)
 model=model.to(device)
-model=torch.nn.Sequential(*list(model.children())[-1]) #Remove the classification layer and learn features only
+model=torch.nn.Sequential(*list(model.children())[:-1]) #Remove the classification layer and learn features only
 
 model.eval()
 
@@ -32,6 +33,6 @@ def extract_features(images):
 
 X_train_features=extract_features(X_train)
 
-extracted_features_path='../model/features'
+extracted_features_path='../models/features'
 np.save(extracted_features_path, X_train_features)
 print('Features extracted and saved successfully!')

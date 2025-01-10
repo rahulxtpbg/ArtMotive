@@ -15,7 +15,7 @@ def preprocess_image(image_path):
     img_cvt=cv2.cvtColor(img, cv2.COLOR_BGR2RGB) #By default, cv2 reads channels in the order BGR. Convert the read order to RGB
 
     img_resized=cv2.resize(img_cvt, (128, 128), interpolation=cv2.INTER_CUBIC) #Resize to 128x128 with interpolation flag set to INTER_CUBIC 
-    img_normalized=img_resized/255.0
+    img_normalized=(img_resized/255.0).astype(np.float32)
 
     return img_normalized
 
