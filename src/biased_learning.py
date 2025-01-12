@@ -35,6 +35,6 @@ model.compile(optimizer='Adam',
 
 model.fit(extracted_features_weighted, y_train_encoded, epochs=20, batch_size=32, validation_split=0.2)
 
-model_save_path='../models/biased_learning_model'
+model_save_path='../models/biased_learning_model.h5'
 model.save(model_save_path)
 print('Model trained and saved successfully!')
